@@ -247,6 +247,27 @@ public sealed class SvgRendererTests
     }
 
     [Test]
+    public void RenderStaticSvgWithCustomLineHeight()
+    {
+        var session = new RecordingSession(width: 8, height: 2);
+        session.AddEvent(0.01, "line1\r\nline2");
+
+        var svg = ConsoleToSvg.Svg.SvgRenderer.Render(
+            session,
+            new ConsoleToSvg.Svg.SvgRenderOptions
+            {
+                Theme = "dark",
+                FontSize = 14,
+                LineHeight = 24,
+            }
+        );
+
+        svg.ShouldContain("viewBox=\"0 0 67.2 48\"");
+        svg.ShouldContain("y=\"14\"");
+        svg.ShouldContain("y=\"38\"");
+    }
+
+    [Test]
     public void RenderStaticSvgFullWidthLineDoesNotProduceExtraBlankRow()
     {
         // 4-wide terminal; fill row 0 completely then CRLF 窶・should produce 2 content rows, not 3

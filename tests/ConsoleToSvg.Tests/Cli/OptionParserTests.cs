@@ -56,6 +56,32 @@ public sealed class OptionParserTests
     }
 
     [Test]
+    public void LineHeightOptionParsed()
+    {
+        var ok = OptionParser.TryParse(
+            new[] { "--lineheight", "20" },
+            out var options,
+            out _,
+            out _
+        );
+        ok.ShouldBeTrue();
+        options!.LineHeight.ShouldBe(20);
+    }
+
+    [Test]
+    public void HyphenatedLineHeightOptionParsed()
+    {
+        var ok = OptionParser.TryParse(
+            new[] { "--line-height", "20" },
+            out var options,
+            out _,
+            out _
+        );
+        ok.ShouldBeTrue();
+        options!.LineHeight.ShouldBe(20);
+    }
+
+    [Test]
     public void ForeColorOptionParsed()
     {
         var ok = OptionParser.TryParse(

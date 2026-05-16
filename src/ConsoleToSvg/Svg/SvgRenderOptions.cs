@@ -15,6 +15,8 @@ public sealed class SvgRenderOptions
 
     public double FontSize { get; set; } = 14d;
 
+    public double? LineHeight { get; set; }
+
     /// <summary>Window chrome definition. null = no chrome (transparent/plain).</summary>
     public ChromeDefinition? Chrome { get; set; }
 
@@ -100,6 +102,7 @@ public sealed class SvgRenderOptions
             Frame = appOptions.Frame,
             Font = appOptions.Font,
             FontSize = appOptions.FontSize ?? 14d,
+            LineHeight = appOptions.LineHeight,
             Chrome = chrome,
             Padding = effectivePadding,
             Loop = appOptions.Loop,

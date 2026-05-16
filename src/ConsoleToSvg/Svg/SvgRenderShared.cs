@@ -41,6 +41,7 @@ internal static class SvgRenderShared
             options.HeightRows,
             commandHeaderRows,
             options.FontSize,
+            options.LineHeight,
             options.SizeWidth,
             options.SizeHeight
         );

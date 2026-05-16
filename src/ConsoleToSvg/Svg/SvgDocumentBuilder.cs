@@ -88,13 +88,14 @@ internal static class SvgDocumentBuilder
         int? heightRows = null,
         int commandHeaderRows = 0,
         double fontSize = 14d,
+        double? lineHeight = null,
         double? sizeWidth = null,
         double? sizeHeight = null
     )
     {
         // Derive font metrics from fontSize
         var cellWidth = fontSize * 0.6d;
-        var cellHeight = fontSize * (18d / 14d);
+        var cellHeight = lineHeight ?? fontSize * (18d / 14d);
         var baselineOffset = fontSize;
 
         var effectiveHeight = includeScrollback ? buffer.TotalHeight : buffer.Height;

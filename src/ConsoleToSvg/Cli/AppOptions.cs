@@ -68,6 +68,8 @@ public sealed class AppOptions
 
     public double? FontSize { get; set; } = null;
 
+    public double? LineHeight { get; set; } = null;
+
     public string Window { get; set; } = "none";
 
     public double? Padding { get; set; }

@@ -595,6 +595,15 @@ public static class OptionParser
 
                 options.FontSize = fontsize;
                 return true;
+            case "--lineheight":
+            case "--line-height":
+                if (!TryParseDouble(value, "--lineheight", out var lineHeight, out error))
+                {
+                    return false;
+                }
+
+                options.LineHeight = lineHeight;
+                return true;
             case "--save-cast":
                 options.SaveCastPath = value;
                 return true;
@@ -949,6 +958,19 @@ public static class OptionParser
         )
         {
             error = "--fontsize must be greater than 0.";
+            return false;
+        }
+
+        if (
+            options.LineHeight.HasValue
+            && (
+                double.IsNaN(options.LineHeight.Value)
+                || double.IsInfinity(options.LineHeight.Value)
+                || options.LineHeight.Value <= 0
+            )
+        )
+        {
+            error = "--lineheight must be greater than 0.";
             return false;
         }
 
